@@ -2,7 +2,7 @@
 
     "I made the addon to make the addon!"
 
-Helps see where you don't have comments inside scripts. Useful for writing addons, as comments are shown as documentation in external editors.
+Helps see where you don't have comments on properties and methods inside scripts. Useful for writing addons, as comments are shown as documentation in external editors.
 
 - Double-click to show line in script editor;
 - Lists undocumented members in white, documented in dark green;
