@@ -1,0 +1,88 @@
+[gd_scene load_steps=2 format=2]
+
+[ext_resource path="res://addons/docs_checklist/main.gd" type="Script" id=1]
+
+[node name="DocsChecklist" type="VBoxContainer"]
+margin_right = 233.0
+margin_bottom = 178.0
+script = ExtResource( 1 )
+legend_labels = [ "Undocumented", "Has Markdown codeblocks", "Undoc with underscore", "Done" ]
+legend_colors = [ Color( 1, 1, 1, 1 ), Color( 0.8, 0.176471, 1, 1 ), Color( 0.701961, 0.560784, 0, 1 ), Color( 0.0117647, 0.337255, 0, 1 ) ]
+
+[node name="Box" type="HBoxContainer" parent="."]
+margin_right = 233.0
+margin_bottom = 24.0
+
+[node name="Folder" type="LineEdit" parent="Box"]
+margin_right = 172.0
+margin_bottom = 24.0
+size_flags_horizontal = 3
+placeholder_text = "Enter Base Dir..."
+
+[node name="Refresh" type="Button" parent="Box"]
+margin_left = 176.0
+margin_right = 233.0
+margin_bottom = 24.0
+text = "Rescan"
+
+[node name="Panel" type="MarginContainer" parent="."]
+margin_top = 28.0
+margin_right = 233.0
+margin_bottom = 150.0
+size_flags_vertical = 3
+
+[node name="Tree" type="Tree" parent="Panel"]
+margin_right = 233.0
+margin_bottom = 122.0
+size_flags_vertical = 3
+allow_reselect = true
+hide_root = true
+
+[node name="Legend" type="VBoxContainer" parent="."]
+margin_top = 154.0
+margin_right = 233.0
+margin_bottom = 178.0
+
+[node name="Box" type="HBoxContainer" parent="Legend"]
+margin_right = 233.0
+margin_bottom = 24.0
+custom_constants/separation = 0
+
+[node name="Control" type="Control" parent="Legend/Box"]
+margin_right = 4.0
+margin_bottom = 24.0
+rect_min_size = Vector2( 4, 0 )
+
+[node name="Color" type="ColorRect" parent="Legend/Box"]
+margin_left = 4.0
+margin_top = 4.0
+margin_right = 20.0
+margin_bottom = 20.0
+rect_min_size = Vector2( 16, 16 )
+size_flags_vertical = 6
+
+[node name="Label" type="Label" parent="Legend/Box"]
+margin_left = 20.0
+margin_top = 5.0
+margin_right = 146.0
+margin_bottom = 19.0
+size_flags_horizontal = 3
+text = "E"
+clip_text = true
+
+[node name="P" type="CheckBox" parent="Legend/Box"]
+margin_left = 146.0
+margin_right = 190.0
+margin_bottom = 24.0
+pressed = true
+text = "P="
+
+[node name="F" type="CheckBox" parent="Legend/Box"]
+margin_left = 190.0
+margin_right = 233.0
+margin_bottom = 24.0
+pressed = true
+text = "F()"
+
+[connection signal="pressed" from="Box/Refresh" to="." method="_on_Refresh_pressed"]
+[connection signal="item_activated" from="Panel/Tree" to="." method="_on_Tree_item_activated"]
